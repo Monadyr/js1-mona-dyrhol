@@ -1,0 +1,58 @@
+:root {
+  --background: linear-gradient(110deg, rgb(65, 32, 18), rgb(24, 11, 3));
+  --headings: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --body-text: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  color: inherit;
+  box-sizing: border-box;
+}
+html{
+  width: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+body {
+  background: var(--background);
+  font-family: var(--body-text);
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+    gap: 20px;
+}
+main{
+  margin: 0 clamp(15px, 5vw, 100px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header{
+  height: clamp(60px, 13vw, 90px);
+  background-color: rgba(41, 27, 17, 0.8);
+  backdrop-filter: blur(4px);
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: clamp(10px, 4.08vw, 80px);
+  color: rgb(255, 255, 255);
+}
+#home-el,
+#cart-el{
+  margin-right: clamp(5px, 2vw, 30px);
+}
+.logo{
+  font-size: clamp(20px, 5vw, 30px);
+  font-weight: 300;
+ 
+}
