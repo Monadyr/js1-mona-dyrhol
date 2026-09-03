@@ -1,7 +1,8 @@
 'use strict';
-// STATE
-const API_URL = 'https://v2.api.noroff.dev/square-eyes';
-let allMovies = [];
+// IMPORT
+import {API_URL, allMovies, fetchMovies} from "./api.js";
+import {renderMovies} from "./render.js";
+
 
 // --- DOM ---
 const movieSection = document.querySelectorAll(".movie-section");
@@ -9,63 +10,6 @@ const trendingMovies = document.getElementById('trending-movies');
 const newReleases = document.getElementById('new-releases');
 const categorySection = document.getElementById('category-section');
 // --- FUNCTIONS ---
-async function fetchMovies(){
-  try {
-    const response = await fetch(API_URL);
-    if(!response.ok){
-      throw new Error(`API Error! Status ${response.status}`);
-    }
-    const result = await response.json();
-    allMovies = result.data;
-  }catch(error){
-    console.log(error);
-  }
-}
-
-function renderMovies(moviesToRender, movieSection){
-   movieSection.innerHTML = "";
-
-    if(moviesToRender.length === 0){
-    movieSection.innerHTML = '<p>Woops... No movies were found</p>';
-    console.log(trending)
-    return;
-   }
-
-   moviesToRender.forEach((movie) => {
-    const movieCard = document.createElement('article');
-    movieCard.classList.add('movie-card');
-    movieCard.dataset.id = movie.id;
-
-    const image = document.createElement('img');
-    image.src = movie.image.url;
-    image.alt = movie.image.alt;
-
-    const title = document.createElement('h3');
-    title.textContent = movie.title;
-
-    const movieData = document.createElement("div")
-    movieData.classList.add('movie-data')
-
-    const genre = document.createElement('p');
-    genre.textContent = `🎬 ${movie.genre}`;
-
-    const rating = document.createElement('p');
-    rating.textContent = `⭐️ ${movie.rating}`;
-
-    const price = document.createElement('p');
-    price.textContent = movie.price;
-
-    movieData.appendChild(genre);
-    movieData.appendChild(rating)
-
-    movieCard.appendChild(image);
-    movieCard.appendChild(title);
-    movieCard.appendChild(movieData);
-    movieCard.appendChild(price);
-
-    movieSection.appendChild(movieCard)
-   })
-}
 
 function fetchCategories(){
   const fetchGenre = allMovies.flatMap((movie) => movie.genre);
