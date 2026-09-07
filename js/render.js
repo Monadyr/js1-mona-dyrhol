@@ -1,11 +1,13 @@
 'use strict'
-
+/**
+ * Movie card
+ */
 export function renderMovies(moviesToRender, movieSection){
+
    movieSection.innerHTML = "";
 
     if(moviesToRender.length === 0){
     movieSection.innerHTML = '<p>Woops... No movies were found</p>';
-    console.log(trending)
     return;
    }
 
@@ -13,6 +15,9 @@ export function renderMovies(moviesToRender, movieSection){
       const movieCard = document.createElement('article');
       movieCard.classList.add('movie-card');
       movieCard.dataset.id = movie.id;
+
+      const link = document.createElement('a');
+      link.href =`product-detail.html?id=${movie.id}`;
 
       const image = document.createElement('img');
       image.src = movie.image.url;
@@ -39,7 +44,6 @@ export function renderMovies(moviesToRender, movieSection){
       discountedPrice.textContent ='kr. ' + movie.discountedPrice;
 
       const onSale = movie.onSale
-      console.log(onSale)
 
       movieData.appendChild(genre);
       movieData.appendChild(rating)
@@ -50,7 +54,8 @@ export function renderMovies(moviesToRender, movieSection){
       movieCard.appendChild(price);
       movieCard.appendChild(discountedPrice)
 
-      movieSection.appendChild(movieCard)
+      link.appendChild(movieCard);
+      movieSection.appendChild(link);          
 
    if(!onSale){
       discountedPrice.textContent= ""

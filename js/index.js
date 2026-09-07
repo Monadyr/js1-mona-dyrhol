@@ -2,22 +2,27 @@
 // IMPORT
 import {API_URL, allMovies, fetchMovies} from "./api.js";
 import {renderMovies} from "./render.js";
-
+import {loadCartFromStorage} from "./cart.js";
 
 // --- DOM ---
 const movieSection = document.querySelectorAll(".movie-section");
 const trendingMovies = document.getElementById('trending-movies');
 const newReleases = document.getElementById('new-releases');
 const categorySection = document.getElementById('category-section');
+const browseBtn = document.getElementById('browse-btn')
 // --- FUNCTIONS ---
-
+/**
+ * Fetch movie api categories
+ */
 function fetchCategories(){
   const fetchGenre = allMovies.flatMap((movie) => movie.genre);
   const selectGenre = [...new Set(fetchGenre)];
 
   return selectGenre.sort();
 }
-
+/**
+ * Create categories card
+ */
 function createCategories(){
   categorySection.innerHTML = "";
     try{
@@ -50,15 +55,22 @@ movieSection.addEventListener('click', function(event){
   
   const movieId = movieCard.dataset.id;
 
-  window.location.href = `product-detail.html?id=${movieId}`
+  window.location.href = `product-detail.html?id=${movieId}`;
+})
+})
+
+browseBtn.addEventListener('click', () =>{
+  browseBtn.classList.add('clicked');
+  window.location.href = './products.html'
 
 })
-})
+
 // --- CALL ---
 
 async function startSite() {
   try{
     await fetchMovies();
+    loadCartFromStorage();
 
     const trending = allMovies.filter(movie => movie.rating >= 8)
     const newMovies = allMovies.filter(movie => movie.released > 2019)

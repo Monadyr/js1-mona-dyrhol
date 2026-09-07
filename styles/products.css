@@ -1,0 +1,41 @@
+h1{
+  color: white;
+  font-size: 50px;
+  font-weight: 400;
+}
+/*--- FILTER BTN ---*/
+.filter-menu{
+  display: none;
+  color: white;
+}
+.filter-menu select{
+  background: rgba(255, 255, 255, 0.122);
+  border: none;
+  border-radius: 5px;
+  padding: 2px 4px;
+}
+.checkbox-el label{
+  margin-right: 20px;
+  padding: 2px 4px;
+  border: solid 0.5px rgba(255, 255, 255, 0.169);
+  border-radius: 5px;
+}
+.checkbox-el input{
+  margin-left: 5px;
+}
+.open{
+display: block;
+}
+
+#filterBtn{
+  width: 200px;
+  padding: 5px 0;
+  border: none;
+  border-radius: 3px;
+  font-weight: bold;
+  color: white;
+  background: rgba(255, 255, 255, 0.122)
+}
+#filterBtn:hover{
+  background: rgba(255, 255, 255, 0.031)
+}

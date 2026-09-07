@@ -27,6 +27,7 @@ body {
   overflow-x: hidden;
     gap: 20px;
 }
+
 main{
   margin: 0 clamp(15px, 5vw, 100px);
   display: flex;
@@ -54,5 +55,10 @@ main{
 .logo{
   font-size: clamp(20px, 5vw, 30px);
   font-weight: 300;
- 
+}
+i #cartCount{
+  font-size: 16px;
+  color: white;
+  position: relative;
+  text-align: center;
 }

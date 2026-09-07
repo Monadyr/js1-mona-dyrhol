@@ -1,0 +1,69 @@
+h1{
+  color: white;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.cart-list{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  gap: 2rem;
+}
+
+.movie-card {
+  background:linear-gradient(to right, rgba(255, 255, 255, 0.122),rgba(43, 15, 4, 0.445));
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: auto;
+  overflow: hidden;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 600px;
+  
+}
+.movie-data{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  width: 400px;
+  margin: 10px;
+}
+.movie-card img {
+  width: 100px;
+  object-fit: cover;
+}
+.movie-card span{
+  position: relative;
+  right: 0;
+  text-align: center;
+  padding-right: 20px;
+  margin: 10px;
+}
+.remove-btn{
+  background: rgba(255, 255, 255, 0.122);
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-weight: bold;
+  margin: 10px;
+}
+
+@media(max-width: 500px){
+  .movie-card{
+    flex-direction: column;
+    align-items: start;
+  }
+  .movie-data{
+    flex-direction: column;
+    align-items: start;
+    width: auto;
+  }
+}

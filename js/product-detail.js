@@ -3,20 +3,23 @@
 // ---IMPORT---
 import {API_URL, allMovies, fetchMovies} from "./api.js";
 import {renderMovies} from "./render.js";
+import {loadCartFromStorage, addToCart} from "./cart.js";
 
 
 // --- DOM ---
 const productDetailInfo = document.querySelector('.product-detail-info');
 const movieSection = document.querySelector(".movie-section");
+const cartCount = document.getElementById('cartCount');
 
 // --- FUNCTIONS ---
-
+/**
+ * Render the movie info.
+ */
 function selectedMovie(movie){
   productDetailInfo.innerHTML = '';
 
   if(!movie){
     productDetailInfo.innerHTML = '<p>Woops... No movie was found</p>';
-    console.log('hei')
     return;
   }
 
@@ -49,7 +52,6 @@ function selectedMovie(movie){
   priceData.classList.add('price-data')
 
   const onSale = movie.onSale
-  console.log(onSale)
 
   const price = document.createElement('p');
   price.classList.add('price')
@@ -60,7 +62,8 @@ function selectedMovie(movie){
   discountedPrice.innerHTML = movie.discountedPrice;
 
   const button = document.createElement('button');
-  button.classList.add('button')
+  button.id = 'addToCartBtn'
+  button.classList.add('add-to-cart-btn')
   button.textContent = 'Add to cart'
 
   movieData.appendChild(genre);
@@ -79,12 +82,6 @@ function selectedMovie(movie){
   productDetailInfo.appendChild(image)
   productDetailInfo.appendChild(infoContainer)
 
-  button.addEventListener('click', () =>{
-    console.log('hei')
-    button.classList.add('clicked-btn')
-    button.innerHTML = 'Added to cart';
-  });
-
   if(!onSale){
     discountedPrice.textContent= ""
     price.innerHTML = `<span>Price: kr. </span>${movie.price}`;
@@ -93,26 +90,33 @@ function selectedMovie(movie){
     discountedPrice.innerHTML= `<span>Now: kr. </span>${movie.discountedPrice}`
     price.innerHTML = `<span>Before: kr. </span>${movie.price}`;
   }
+  addToCart(movie, button)
 };
 
 function genreMatch(genre){
   return allMovies.filter((movie) => movie.genre === genre);
 }
-// --- EVENT LISTENER ---
 
+
+// --- EVENT LISTENER ---
+/**
+ * Movie category cards event listener.
+ */
 movieSection.addEventListener('click', (event) => {
   const movieCard = event.target.closest('.movie-card');
   
   const movieId = movieCard.dataset.id;
 
   window.location.href = `product-detail.html?id=${movieId}`
-
 })
+
 // --- CALL ---
 
 async function startSite() {
   try{
     await fetchMovies();
+
+    loadCartFromStorage();
 
     const params = new URLSearchParams(window.location.search);
     const movieId = params.get('id');
@@ -124,6 +128,7 @@ async function startSite() {
     const matchingMovies = genreMatch(movie.genre)
 
     renderMovies(matchingMovies, movieSection)
+    
     
   }catch(error){
     console.log("failed", error)

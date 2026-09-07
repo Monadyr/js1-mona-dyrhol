@@ -1,3 +1,4 @@
+/*--- MOVIE INFO CARD ---*/
 .product-detail-info{
   display: grid;
   grid-template-columns: auto;
@@ -22,9 +23,6 @@
   font-size: 20px;
   font-weight: bold;
 }
-.on-sale{
-  text-decoration: line-through;
-}
 .discounted-price{
   font-size: 30px;
   font-weight: bold;
@@ -43,7 +41,7 @@
   justify-content: center;
   color: white;
 }
-.button{
+.add-to-cart-btn{
   color: black;
   width: fit-content;
   padding: 5px 10px;
@@ -55,6 +53,11 @@
 .clicked-btn{
   color: red;
 }
+/*--- SALE = TRUE ---*/
+.on-sale{
+  text-decoration: line-through;
+}
+/*--- GENRE SECTION ---*/
 h2{
   color: white;
 }
