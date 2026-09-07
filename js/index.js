@@ -3,6 +3,7 @@
 import {API_URL, allMovies, fetchMovies} from "./api.js";
 import {renderMovies} from "./render.js";
 import {loadCartFromStorage} from "./cart.js";
+import { footerYear } from "./footer.js";
 
 // --- DOM ---
 const movieSection = document.querySelectorAll(".movie-section");
@@ -44,7 +45,7 @@ function createCategories(){
         }
     }catch(error){
       console.log(error)
-      categorySection.innerHTML = '<p>Could not load categories.</p>';
+      categorySection.innerHTML = '<p class="error-msg">Could not load categories. Try again later.</p>';
     }
 }
 
@@ -79,6 +80,7 @@ async function startSite() {
     renderMovies(newMovies, newReleases);
 
     createCategories();
+    footerYear()
   }catch(error){
     console.log("failed", error)
   }

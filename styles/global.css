@@ -25,7 +25,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   overflow-x: hidden;
-    gap: 20px;
+  gap: 20px;
 }
 
 main{
@@ -35,6 +35,10 @@ main{
   gap: 20px;
 }
 
+.error-msg{
+  color: white;
+  font-style: italic;
+}
 .header{
   height: clamp(60px, 13vw, 90px);
   background-color: rgba(41, 27, 17, 0.8);
@@ -61,4 +65,8 @@ i #cartCount{
   color: white;
   position: relative;
   text-align: center;
+}
+
+footer {
+  color: white;
 }

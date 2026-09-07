@@ -3,6 +3,7 @@
 import {API_URL, allMovies, fetchMovies} from "./api.js";
 import {renderMovies} from "./render.js";
 import {loadCartFromStorage} from "./cart.js";
+import { footerYear } from "./footer.js";
 
 const movieSection = document.querySelector('.movie-section')
 const titleGenre = document.getElementById('title-genre')
@@ -36,8 +37,7 @@ async function renderCategoryPage() {
 
     renderMovies(matchGenre, movieSection)
     
-    
-
+    footerYear()
   }catch(error){
     console.log("her er det feil, " + error)
   }

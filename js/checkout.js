@@ -2,6 +2,7 @@
 import {API_URL, allMovies, fetchMovies} from "./api.js";
 import {renderMovies} from "./render.js";
 import {loadCartFromStorage, fetchCart, removeFromCart} from "./cart.js";
+import { footerYear } from "./footer.js";
 
 const cartList = document.querySelector('.cart-list')
 
@@ -11,10 +12,10 @@ const cartList = document.querySelector('.cart-list')
 function displayCart(){
   const cart = fetchCart()
 
-  cartList.textContent = "Cart is empty";
+  cartList.innerHTML = '<p class="cart-text">Cart is empty, go back and add products</p>';
 
   cart.forEach((movie)=> {
-    cartList.textContent = "";
+    cartList.textContent = ""
     const movieCard = document.createElement('article');
     movieCard.classList.add('movie-card');
 
@@ -56,8 +57,7 @@ function displayCart(){
 
   button.addEventListener('click', ()=> {
     
-      removeFromCart(movie.id, movieCard, quantity)
-      console.log(movie.id, movieCard, quantity)
+      removeFromCart(movie.id, movieCard, quantity, cartList)
   });
   });
 }
@@ -69,7 +69,7 @@ async function startSite() {
     await fetchMovies();
     loadCartFromStorage();
     displayCart()
-
+    footerYear()
   }catch(error){
     console.log("failed", error)
   }

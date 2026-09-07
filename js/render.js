@@ -7,7 +7,7 @@ export function renderMovies(moviesToRender, movieSection){
    movieSection.innerHTML = "";
 
     if(moviesToRender.length === 0){
-    movieSection.innerHTML = '<p>Woops... No movies were found</p>';
+    movieSection.innerHTML = '<p class="error-msg">Woops... No movies were found. Try again later.</p>';
     return;
    }
 

@@ -4,6 +4,7 @@
 import {API_URL, allMovies, fetchMovies} from "./api.js";
 import {renderMovies} from "./render.js";
 import {loadCartFromStorage, addToCart} from "./cart.js";
+import { footerYear } from "./footer.js";
 
 
 // --- DOM ---
@@ -129,7 +130,7 @@ async function startSite() {
 
     renderMovies(matchingMovies, movieSection)
     
-    
+    footerYear()
   }catch(error){
     console.log("failed", error)
   }

@@ -2,7 +2,9 @@
 // --- IMPORT ---
 import {API_URL, allMovies, fetchMovies} from "./api.js";
 import {renderMovies} from "./render.js";
-import {loadCartFromStorage} from "./cart.js";// --- STATE ---
+import {loadCartFromStorage} from "./cart.js";
+import { footerYear } from "./footer.js";
+// --- STATE ---
 let selectedGenres = [];
 // --- DOM ---
 const movieSection = document.querySelector('.movie-section')
@@ -116,6 +118,7 @@ async function startSite(){
     loadCartFromStorage();
     renderPage();
     createGenreCheckbox();
+    footerYear()
   }catch(error){
     console.log('dette er feil ' + error)
   }

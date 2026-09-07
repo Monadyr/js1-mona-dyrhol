@@ -81,7 +81,7 @@ export function fetchCart(){
 /**
  * Remove item from cart and call it in button.addEventListener() in checkout.js.
  */
-export function removeFromCart(movieId, movieCard, cartQuantity){
+export function removeFromCart(movieId, movieCard, cartQuantity, cartList){
 const matchingMovie = cart.find(movie => movie.id == movieId);  
 
 if(matchingMovie.quantity > 1){
@@ -90,6 +90,7 @@ if(matchingMovie.quantity > 1){
 }else{
   cart = cart.filter(movie => movie.id !== movieId);
   movieCard.remove();
+  cartList.innerHTML = '<p class="cart-text">All item has been removed</p>'
 }
 
   localStorage.setItem('cart', JSON.stringify(cart));

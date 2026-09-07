@@ -1,0 +1,7 @@
+main {
+width: min(900px, 90%);
+margin: 80px auto;
+padding: 70px;
+border-radius: 12px;
+color: white;
+}
