@@ -49,7 +49,6 @@ export function addToCart(movie, button){
     
     const matchingItem = cart.find(item => item.id === movie.id);
 
-
     if(matchingItem){
       matchingItem.quantity += 1;
     }else{
@@ -80,21 +79,18 @@ export function fetchCart(){
 }
 
 /**
- * Remove item from cart
+ * Remove item from cart and call it in button.addEventListener() in checkout.js.
  */
-export function removeFromCart(movieId){
-  const matchingMovie = cart.find(movie => movie.id == movieId);
+export function removeFromCart(movieId, movieCard, cartQuantity){
+const matchingMovie = cart.find(movie => movie.id == movieId);  
 
-  if(!matchingMovie){
-    return classList.innerHTML= '<p>Hei</p>'
-  }
-
-  if(matchingMovie.quantity > 1) {
-    matchingMovie.quantity -= 1;
-    return movieId.quantity;
-  }else{
-    cart = cart.filter(movie => movie.id !== movieId);
-  }
+if(matchingMovie.quantity > 1){
+  matchingMovie.quantity -= 1;
+  cartQuantity.textContent = 'Quantity: ' + matchingMovie.quantity;
+}else{
+  cart = cart.filter(movie => movie.id !== movieId);
+  movieCard.remove();
+}
 
   localStorage.setItem('cart', JSON.stringify(cart));
   updateCartQuantity();

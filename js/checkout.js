@@ -11,9 +11,10 @@ const cartList = document.querySelector('.cart-list')
 function displayCart(){
   const cart = fetchCart()
 
-  cartList.innerHTML = "";
+  cartList.textContent = "Cart is empty";
 
   cart.forEach((movie)=> {
+    cartList.textContent = "";
     const movieCard = document.createElement('article');
     movieCard.classList.add('movie-card');
 
@@ -54,13 +55,12 @@ function displayCart(){
 
 
   button.addEventListener('click', ()=> {
-    removeFromCart(movie.id);
+    
+      removeFromCart(movie.id, movieCard, quantity)
+      console.log(movie.id, movieCard, quantity)
   });
-
   });
-  
 }
-
 
 
 // --- CALL ---
