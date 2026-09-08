@@ -4,18 +4,21 @@ h1{
   font-weight: 600;
 }
 
+.buy-btn{
+  width: 150px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  padding: 8px 16px;
+  margin: 16px 0;
+  border-radius: 15px;
+}
+
 .cart-list{
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-}
-
-.cart-text,
-.checkout-btn-msg{
-  color: white;
-  font-size: 20px;
-  font-style: italic;
 }
 
 .movie-card {
@@ -32,7 +35,6 @@ h1{
   align-items: center;
   justify-content: space-between;
   max-width: 600px;
-  
 }
 .movie-data{
   display: flex;
@@ -53,29 +55,26 @@ h1{
   padding-right: 20px;
   margin: 10px;
 }
-.remove-btn{
-  background: rgba(255, 255, 255, 0.122);
+
+fieldset{
   border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  font-weight: bold;
-  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
 }
-.on-sale{
-  text-decoration: line-through;
+fieldset div {
+  background: white;
 }
-.discounted-price{
-  display: block;
-}
-.checkout-btn{
-  width: 150px;
-  font-size: 16px;
-  font-weight: bold;
+fieldset div input{
   border: none;
-  padding: 8px 16px;
-  margin: 16px 0;
-  border-radius: 15px;
 }
+fieldset div label {
+  
+}
+fieldset input{
+width: clamp(100px, 15vw, 300px);
+}
+
 
 @media(max-width: 500px){
   .movie-card{

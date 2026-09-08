@@ -1,101 +1,117 @@
-'use strict'
+"use strict";
+import { API_URL, allMovies, fetchMovies } from "./api.js";
+import {
+  loadCartFromStorage,
+  fetchCart,
+  removeFromCart,
+} from "./render-cart.js";
+import { footerYear } from "./footer.js";
 
-const cartCount = document.getElementById('cartCount');
+const cartList = document.querySelector(".cart-list");
+const checkoutBtn = document.querySelector(".checkout-btn");
+const checkoutBtnMsg = document.querySelector('.checkout-btn-msg')
 
-let cart = [];
+// --- FUNCTION ---
 /**
- * create quantity of cart
+ * Display cart list on page
  */
-function updateCartQuantity(){
-  if(!cartCount) return;
-
-  let cartQuantity = 0;
-    
-    cart.forEach((item)=>{
-      cartQuantity += item.quantity;
-    })
-    cartCount.textContent = cartQuantity;
-}
-/**
- * fetch cart quantity and call
- */
-export function loadCartFromStorage(){
-  const loadCart = localStorage.getItem('cart');
-
-  if(loadCart){
-    cart = JSON.parse(loadCart);
+function displayCart() {
+  const cart = fetchCart();
+  if (cart.length === 0) {
+    cartList.innerHTML =
+      '<p class="cart-text">Cart is empty, go back and add products</p>';
+    return;
   }
-  updateCartQuantity();
-}
-/**
- * save cart to localStorage
- */
-function saveCartToStorage(){
-  try{
-   localStorage.setItem('cart', JSON.stringify(cart));
-  }catch(error){
-    console.log(error)
-  }
-}
 
-/**
- * Button for add to cart that is called in selectedMovie() in product-detail.js.
- */
-export function addToCart(movie, button){
-  button.addEventListener('click', () =>{
+  cart.forEach((movie) => {
+    const movieCard = document.createElement("article");
+    movieCard.classList.add("movie-card");
 
-    button.classList.add('clicked-btn');
-    button.innerHTML = 'Added to cart';
-    
-    const matchingItem = cart.find(item => item.id === movie.id);
+    const link = document.createElement("a");
+    link.href = `product-detail.html?id=${movie.id}`;
 
-    if(matchingItem){
-      matchingItem.quantity += 1;
-    }else{
-      cart.push({
-        id: movie.id,
-        title: movie.title,
-        image: movie.image,
-        price: movie.price,
-        discountedPrice: movie.discountedPrice,
-        quantity: 1
-    });
+    const img = document.createElement("img");
+    img.src = movie.image.url;
+    img.alt = movie.image.alt;
+
+    const movieInfo = document.createElement("div");
+    movieInfo.classList.add("movie-info");
+    const movieData = document.createElement("div");
+    movieData.classList.add("movie-data");
+
+    const title = document.createElement("h3");
+    title.textContent = "Movie: " + movie.title;
+
+    const price = document.createElement("p");
+    price.classList.add("card-price");
+    price.textContent = "kr. " + movie.price;
+
+    const discountedPrice = document.createElement("p");
+    discountedPrice.classList.add("card-discounted-price");
+    discountedPrice.textContent = "kr. " + movie.discountedPrice;
+
+    const onSale = movie.onSale;
+
+    const quantity = document.createElement("span");
+    quantity.textContent = "Quantity: " + movie.quantity;
+
+    const button = document.createElement("button");
+    button.classList.add("remove-btn");
+    button.textContent = "Remove";
+
+    link.appendChild(title);
+    link.appendChild(price);
+    link.appendChild(discountedPrice);
+    movieInfo.appendChild(link);
+
+    movieData.appendChild(img);
+    movieData.appendChild(movieInfo);
+
+    movieCard.appendChild(movieData);
+    movieCard.appendChild(quantity);
+    movieCard.appendChild(button);
+
+    cartList.appendChild(movieCard);
+
+    if (!onSale) {
+      discountedPrice.textContent = "";
+    } else {
+      price.classList.add("on-sale");
     }
-
-    updateCartQuantity();
-    saveCartToStorage();
+    /**
+     * Remove movie button
+     */
+    button.addEventListener("click", () => {
+      removeFromCart(movie.id, movieCard, quantity, cartList);
+    });
   });
 }
-
+// --- EVENT LISTENER ---
 /**
- * Fetch cart from localStorage
+ * Checkout button
  */
-export function fetchCart(){
-  const getCart = localStorage.getItem('cart')
 
-  if(getCart){
-    cart = JSON.parse(getCart)
+checkoutBtn.addEventListener("click", () => {
+  checkoutBtn.classList.add("clicked");
+  const shoppingCart = fetchCart()
+  if(shoppingCart.length >= 1){
+  window.location.href = "./checkout.html";
+  }else{
+    console.log('empty cart')
+    checkoutBtnMsg.innerHTML = '<p>Your cart is empty. Add a product to continue.</p>'
   }
-  return cart;
-}
+});
 
-/**
- * Remove item from cart and call it in button.addEventListener() in checkout.js.
- */
-export function removeFromCart(movieId, movieCard, cartQuantity, cartList){
-const matchingMovie = cart.find(movie => movie.id == movieId);  
+// --- CALL ---
+async function startSite() {
+  try {
+    await fetchMovies();
+    loadCartFromStorage();
+    displayCart();
+    footerYear();
+  } catch (error) {
+    console.log("failed", error);
 
-if(matchingMovie.quantity > 1){
-  matchingMovie.quantity -= 1;
-  cartQuantity.textContent = 'Quantity: ' + matchingMovie.quantity;
-}else{
-  cart = cart.filter(movie => movie.id !== movieId);
-  movieCard.remove();
+  }
 }
-if(!cart.length){
-  cartList.innerHTML = '<p class="cart-text">All item has been removed</p>'
-}
-
-  localStorage.setItem('cart', JSON.stringify(cart));
-  updateCartQuantity();
-}
+startSite();
