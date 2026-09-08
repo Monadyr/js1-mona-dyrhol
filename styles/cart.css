@@ -60,6 +60,12 @@ h1{
   font-weight: bold;
   margin: 10px;
 }
+.on-sale{
+  text-decoration: line-through;
+}
+.discounted-price{
+  display: block;
+}
 
 @media(max-width: 500px){
   .movie-card{

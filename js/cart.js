@@ -57,6 +57,7 @@ export function addToCart(movie, button){
         title: movie.title,
         image: movie.image,
         price: movie.price,
+        discountedPrice: movie.discountedPrice,
         quantity: 1
     });
     }
@@ -90,6 +91,8 @@ if(matchingMovie.quantity > 1){
 }else{
   cart = cart.filter(movie => movie.id !== movieId);
   movieCard.remove();
+}
+if(!cart.length){
   cartList.innerHTML = '<p class="cart-text">All item has been removed</p>'
 }
 

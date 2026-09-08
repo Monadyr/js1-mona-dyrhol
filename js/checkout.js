@@ -11,13 +11,17 @@ const cartList = document.querySelector('.cart-list')
  */
 function displayCart(){
   const cart = fetchCart()
-
-  cartList.innerHTML = '<p class="cart-text">Cart is empty, go back and add products</p>';
+  if(cart.length === 0){
+    cartList.innerHTML = '<p class="cart-text">Cart is empty, go back and add products</p>';
+    return
+  }
 
   cart.forEach((movie)=> {
-    cartList.textContent = ""
     const movieCard = document.createElement('article');
     movieCard.classList.add('movie-card');
+
+    const link = document.createElement('a');
+    link.href =`product-detail.html?id=${movie.id}`;
 
     const img = document.createElement('img');
     img.src = movie.image.url;
@@ -35,6 +39,12 @@ function displayCart(){
     price.classList.add('card-price')
     price.textContent ='kr. ' +  movie.price;
 
+    const discountedPrice = document.createElement('p');
+    discountedPrice.classList.add('card-discounted-price')
+    discountedPrice.textContent ='kr. ' +  movie.discountedPrice;
+
+    const onSale = movie.onSale;
+
     const quantity = document.createElement('span');
     quantity.textContent ='Quantity: ' + movie.quantity;
 
@@ -42,8 +52,11 @@ function displayCart(){
     button.classList.add('remove-btn');
     button.textContent = 'Remove';
     
-    movieInfo.appendChild(title);
-    movieInfo.appendChild(price);
+    
+    link.appendChild(title);
+    link.appendChild(price);
+    link.appendChild(discountedPrice);
+    movieInfo.appendChild(link);
     
     movieData.appendChild(img);
     movieData.appendChild(movieInfo);
@@ -54,6 +67,11 @@ function displayCart(){
 
     cartList.appendChild(movieCard);
 
+     if(!onSale){
+      discountedPrice.textContent= ""
+    }else{
+      price.classList.add('on-sale')
+    }
 
   button.addEventListener('click', ()=> {
     

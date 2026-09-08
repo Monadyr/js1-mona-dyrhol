@@ -69,4 +69,8 @@ i #cartCount{
 
 footer {
   color: white;
+  margin: 30px clamp(15px, 5vw, 100px);
+}
+footer a:hover {
+  font-weight: bold;
 }

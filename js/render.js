@@ -30,10 +30,10 @@ export function renderMovies(moviesToRender, movieSection){
       movieData.classList.add('movie-data')
 
       const genre = document.createElement('p');
-      genre.textContent = `🎬 ${movie.genre}`;
+      genre.textContent = `${movie.genre}`;
 
       const rating = document.createElement('p');
-      rating.textContent = `⭐️ ${movie.rating}`;
+      rating.textContent = `${movie.rating}`;
 
       const price = document.createElement('p');
       price.classList.add('card-price')
@@ -43,7 +43,7 @@ export function renderMovies(moviesToRender, movieSection){
       discountedPrice.classList.add('card-discounted-price')
       discountedPrice.textContent ='kr. ' + movie.discountedPrice;
 
-      const onSale = movie.onSale
+      const onSale = movie.onSale;
 
       movieData.appendChild(genre);
       movieData.appendChild(rating)
