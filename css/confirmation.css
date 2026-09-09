@@ -1,0 +1,54 @@
+h1,h2,.purchase-text{
+  color: white;
+}
+#displayOrder{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.movie-card {
+  background:linear-gradient(to right, rgba(255, 255, 255, 0.122),rgba(43, 15, 4, 0.445));
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: auto;
+  overflow: hidden;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 600px;
+}
+
+.movie-card img {
+  width: 100px;
+  object-fit: cover;
+}
+.movie-card span{
+  position: relative;
+  right: 0;
+  text-align: center;
+  padding-right: 20px;
+  margin: 10px;
+}
+
+.shop-more-link{
+  color: white;
+  border: solid 2px rgba(72, 59, 53, 0.275) ;
+  border-radius: 10px;
+  width: fit-content;
+  padding: 3px 9px;
+}
+.shop-more-link:hover {
+  background: rgba(255, 255, 255, 0.122);
+}
+
+@media(max-width: 500px){
+  .movie-card{
+    flex-direction: column;
+    align-items: start;
+  }
+}

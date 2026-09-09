@@ -2,7 +2,7 @@
 /**
  * Movie card
  */
-export function renderMovies(moviesToRender, movieSection){
+export function renderMovies(moviesToRender, movieSection, productPath){
 
    movieSection.innerHTML = "";
 
@@ -17,7 +17,7 @@ export function renderMovies(moviesToRender, movieSection){
       movieCard.dataset.id = movie.id;
 
       const link = document.createElement('a');
-      link.href =`../product/index.html?id=${movie.id}`;
+      link.href =`${productPath}?id=${movie.id}`;
 
       const image = document.createElement('img');
       image.src = movie.image.url;

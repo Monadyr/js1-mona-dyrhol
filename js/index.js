@@ -1,6 +1,6 @@
 "use strict";
 // IMPORT
-import { API_URL, allMovies, fetchMovies } from "./api.js";
+import { allMovies, fetchMovies } from "./api.js";
 import { renderMovies } from "./render.js";
 import { loadCartFromStorage } from "./render-cart.js";
 import { footerYear } from "./footer.js";
@@ -11,6 +11,8 @@ const trendingMovies = document.getElementById("trending-movies");
 const newReleases = document.getElementById("new-releases");
 const categorySection = document.getElementById("category-section");
 const browseBtn = document.getElementById("browse-btn");
+const catchError = document.getElementById('catch-error')
+
 // --- FUNCTIONS ---
 /**
  * Fetch movie api categories
@@ -50,15 +52,6 @@ function createCategories() {
 }
 
 // --- EVENT LISTENER ---
-movieSection.forEach((movieSection) => {
-  movieSection.addEventListener("click", function (event) {
-    const movieCard = event.target.closest(".movie-card");
-
-    const movieId = movieCard.dataset.id;
-
-    window.location.href = `product-detail.html?id=${movieId}`;
-  });
-});
 
 browseBtn.addEventListener("click", () => {
   browseBtn.classList.add("clicked");
@@ -68,6 +61,9 @@ browseBtn.addEventListener("click", () => {
 // --- CALL ---
 
 async function startSite() {
+  newReleases.innerHTML = '<div class="spinner" role="status" aria-live="polite"></div>';
+  trendingMovies.innerHTML = '<div class="spinner" role="status" aria-live="polite"></div>';
+  categorySection.innerHTML = '<div class="spinner" role="status" aria-live="polite"></div>';
   try {
     await fetchMovies();
     loadCartFromStorage();
@@ -75,13 +71,14 @@ async function startSite() {
     const trending = allMovies.filter((movie) => movie.rating >= 8);
     const newMovies = allMovies.filter((movie) => movie.released > 2019);
 
-    renderMovies(trending, trendingMovies);
-    renderMovies(newMovies, newReleases);
+    renderMovies(trending, trendingMovies, 'product/index.html');
+    renderMovies(newMovies, newReleases, 'product/index.html');
 
     createCategories();
     footerYear();
   } catch (error) {
     console.log("failed", error);
+    catchError.innerHTML = 'Something went wrong.. Please try again later.';
   }
 }
 startSite();

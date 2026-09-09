@@ -1,6 +1,6 @@
 "use strict";
 // --- IMPORT ---
-import { API_URL, allMovies, fetchMovies } from "./api.js";
+import { allMovies, fetchMovies } from "./api.js";
 import { renderMovies } from "./render.js";
 import { loadCartFromStorage } from "./render-cart.js";
 import { footerYear } from "./footer.js";
@@ -15,15 +15,10 @@ function genreMatch(genre) {
   return allMovies.filter((movie) => movie.genre === genre);
 }
 // --- EVENT LISTENER ---
-movieSection.addEventListener("click", (event) => {
-  const movieCard = event.target.closest(".movie-card");
 
-  const movieId = movieCard.dataset.id;
-
-  window.location.href = `product-detail.html?id=${movieId}`;
-});
 // --- CALL ---
 async function renderCategoryPage() {
+  movieSection.innerHTML='<div class="spinner" role="status" aria-live="polite"></div>';
   try {
     await fetchMovies();
     loadCartFromStorage();
@@ -33,7 +28,7 @@ async function renderCategoryPage() {
     const matchGenre = genreMatch(genre);
     titleGenre.textContent = genre.toLocaleUpperCase();
 
-    renderMovies(matchGenre, movieSection);
+    renderMovies(matchGenre, movieSection,'../product/index.html');
 
     footerYear();
   } catch (error) {

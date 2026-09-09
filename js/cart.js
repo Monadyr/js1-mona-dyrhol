@@ -1,5 +1,4 @@
 "use strict";
-import { API_URL, allMovies, fetchMovies } from "./api.js";
 import {
   loadCartFromStorage,
   fetchCart,
@@ -97,7 +96,6 @@ checkoutBtn.addEventListener("click", () => {
   if(shoppingCart.length >= 1){
   window.location.href = "../checkout/index.html";
   }else{
-    console.log('empty cart')
     checkoutBtnMsg.innerHTML = '<p>Your cart is empty. Add a product to continue.</p>'
   }
 });
@@ -105,13 +103,12 @@ checkoutBtn.addEventListener("click", () => {
 // --- CALL ---
 async function startSite() {
   try {
-    await fetchMovies();
     loadCartFromStorage();
     displayCart();
     footerYear();
   } catch (error) {
     console.log("failed", error);
-
+    cartList.innerHTML='<p class="error-msg">Something went wrong, please try again later.</p>'
   }
 }
 startSite();

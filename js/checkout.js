@@ -1,13 +1,15 @@
 "use strict";
 
-import { loadCartFromStorage, fetchCart, removeFromCart } from "./render-cart.js";
+import { loadCartFromStorage, fetchCart} from "./render-cart.js";
 import { footerYear } from "./footer.js";
 // --- DOM ---
 const cartList = document.querySelector(".cart-list");
 const subTotal = document.getElementById('subtotal');
 const shipping = document.getElementById('shipping');
 const total = document.getElementById('total');
-const country = document.getElementById('country')
+const country = document.getElementById('country');
+const buyBtn = document.querySelector('.buy-btn');
+const checkoutForm = document.getElementById('checkout-form')
 // --- FUNCTION ---
 /**
  * render cart from local storage and place on page
@@ -98,12 +100,8 @@ function priceSummary(){
     }else{
       totalSub += product.price * product.quantity;
     }
-    console.log(totalSub.toFixed(2));
-    console.log(product.onSale);
   })
   const priceTotal = totalSub + shippingCost;
-
-  console.log(priceTotal)
 
   subTotal.textContent = `Kr. ${totalSub.toFixed(2)}`;
   shipping.textContent = `Kr. ${shippingCost.toFixed(2)}`;
@@ -114,7 +112,19 @@ function priceSummary(){
 country.addEventListener('change', () => {
   priceSummary();
 })
+/**
+ * Submit order, remove product from localStorage, and save the order in sessionStorage to render on confirmation page.
+ */
+checkoutForm.addEventListener('submit', (event)=>{
+  event.preventDefault();
 
+  const cart = fetchCart();
+
+  sessionStorage.setItem('order', JSON.stringify(cart));
+  localStorage.removeItem('cart')
+  
+  window.location.href = './confirmation/index.html';
+})
 // --- CALL ---
 function startSite() {
   try {
@@ -124,6 +134,7 @@ function startSite() {
     footerYear();
   } catch (error) {
     console.log("failed", error);
+    cartList.innerHTML='<p class="error-msg">Something went wrong, please try again later.</p>'
   }
 }
 startSite();

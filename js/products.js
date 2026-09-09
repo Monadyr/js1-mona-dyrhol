@@ -1,6 +1,6 @@
 "use strict";
 // --- IMPORT ---
-import { API_URL, allMovies, fetchMovies } from "./api.js";
+import { allMovies, fetchMovies } from "./api.js";
 import { renderMovies } from "./render.js";
 import { loadCartFromStorage } from "./render-cart.js";
 import { footerYear } from "./footer.js";
@@ -98,7 +98,7 @@ function renderPage(sortOption = sortReleased.value) {
 
   movies = filterContainer(movies, sortOption);
 
-  renderMovies(movies, movieSection);
+  renderMovies(movies, movieSection, 'product/index.html');
 }
 
 // --- EVENT LISTENER ---
@@ -115,6 +115,8 @@ sortRating.addEventListener("change", () => {
 
 // --- CALL ---
 async function startSite() {
+  movieSection.innerHTML = '<div class="spinner" role="status" aria-live="polite"></div>'
+
   try {
     await fetchMovies();
     loadCartFromStorage();

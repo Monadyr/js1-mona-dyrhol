@@ -13,7 +13,7 @@ export async function fetchMovies(){
     allMovies = result.data;
 
   }catch(error){
-    console.log(error);
+    throw error;
   }
 }
 

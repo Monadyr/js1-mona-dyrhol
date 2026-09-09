@@ -1,7 +1,7 @@
 "use strict";
 
 // ---IMPORT---
-import { API_URL, allMovies, fetchMovies } from "./api.js";
+import { allMovies, fetchMovies } from "./api.js";
 import { renderMovies } from "./render.js";
 import { loadCartFromStorage, addToCart } from "./render-cart.js";
 import { footerYear } from "./footer.js";
@@ -98,20 +98,13 @@ function genreMatch(genre) {
 }
 
 // --- EVENT LISTENER ---
-/**
- * Movie category cards event listener.
- */
-movieSection.addEventListener("click", (event) => {
-  const movieCard = event.target.closest(".movie-card");
-
-  const movieId = movieCard.dataset.id;
-
-  window.location.href = `../product/index.html?id=${movieId}`;
-});
 
 // --- CALL ---
 
 async function startSite() {
+  productDetailInfo.innerHTML = '<div class="spinner" role="status" aria-live="polite"></div>'
+   movieSection.innerHTML = '<div class="spinner" role="status" aria-live="polite"></div>'
+
   try {
     await fetchMovies();
 
@@ -126,7 +119,7 @@ async function startSite() {
 
     const matchingMovies = genreMatch(movie.genre);
 
-    renderMovies(matchingMovies, movieSection);
+    renderMovies(matchingMovies, movieSection, '../product/index.html');
 
     footerYear();
   } catch (error) {
