@@ -28,7 +28,7 @@ function displayCart() {
     movieCard.classList.add("movie-card");
 
     const link = document.createElement("a");
-    link.href = `product-detail.html?id=${movie.id}`;
+    link.href = `../product/index.html?id=${movie.id}`;
 
     const img = document.createElement("img");
     img.src = movie.image.url;
@@ -95,7 +95,7 @@ checkoutBtn.addEventListener("click", () => {
   checkoutBtn.classList.add("clicked");
   const shoppingCart = fetchCart()
   if(shoppingCart.length >= 1){
-  window.location.href = "./checkout.html";
+  window.location.href = "../checkout/index.html";
   }else{
     console.log('empty cart')
     checkoutBtnMsg.innerHTML = '<p>Your cart is empty. Add a product to continue.</p>'

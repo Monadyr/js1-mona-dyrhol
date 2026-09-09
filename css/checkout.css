@@ -55,26 +55,34 @@ h1{
   padding-right: 20px;
   margin: 10px;
 }
+.on-sale{
+  text-decoration: line-through;
+}
 
 fieldset{
   border: none;
   display: flex;
   flex-direction: column;
   width: 500px;
+  color: white;
 }
 fieldset div {
   background: white;
 }
 fieldset div input{
   border: none;
+
 }
 fieldset div label {
-  
+  color: black;
 }
 fieldset input{
 width: clamp(100px, 15vw, 300px);
+color: black;
 }
-
+.Summary{
+  color: white;
+}
 
 @media(max-width: 500px){
   .movie-card{

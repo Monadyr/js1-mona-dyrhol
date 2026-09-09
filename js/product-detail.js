@@ -106,7 +106,7 @@ movieSection.addEventListener("click", (event) => {
 
   const movieId = movieCard.dataset.id;
 
-  window.location.href = `product-detail.html?id=${movieId}`;
+  window.location.href = `../product/index.html?id=${movieId}`;
 });
 
 // --- CALL ---

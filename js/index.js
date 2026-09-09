@@ -36,7 +36,7 @@ function createCategories() {
       const uniqueTitle = document.createElement("h3");
 
       uniqueTitle.textContent = genres[i];
-      uniqueId.href = `category-specific.html?genre=${genres[i]}`;
+      uniqueId.href = `category/category-specific.html?genre=${genres[i]}`;
 
       uniqueId.appendChild(uniqueTitle);
       uniqueGenre.appendChild(uniqueId);

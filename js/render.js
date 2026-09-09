@@ -17,7 +17,7 @@ export function renderMovies(moviesToRender, movieSection){
       movieCard.dataset.id = movie.id;
 
       const link = document.createElement('a');
-      link.href =`product-detail.html?id=${movie.id}`;
+      link.href =`../product/index.html?id=${movie.id}`;
 
       const image = document.createElement('img');
       image.src = movie.image.url;

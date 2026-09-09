@@ -7,7 +7,11 @@ const cartList = document.querySelector(".cart-list");
 const subTotal = document.getElementById('subtotal');
 const shipping = document.getElementById('shipping');
 const total = document.getElementById('total');
+const country = document.getElementById('country')
 // --- FUNCTION ---
+/**
+ * render cart from local storage and place on page
+ */
 function getCart(){
   const cart = fetchCart();
 
@@ -59,24 +63,67 @@ function getCart(){
       cartList.appendChild(movieCard);
   })
 }
-console.log(fetchCart())
+/**
+ * Estimate shipping cost based on country
+ */
+function shippingAddress(){
+  const shippingRates = {
+      norway: 0,
+      sweden: 50,
+      denmark: 50,
+      default: 200
+    };
+
+  const countryName = country.value.toLowerCase();
+
+  if(countryName === ""){
+      return 0;
+    }
+
+  return shippingRates[countryName] ?? shippingRates.default;
+}
+/**
+ * Calculate price from products, shipping to total price. 
+ */
 
 function priceSummary(){
-  const cart = fetchCart()
-  subTotal = cart
+  let cart = fetchCart()
+  let shippingCost = shippingAddress()
+  
+  let totalSub = 0
+
+  cart.forEach((product) => {
+    if(product.onSale){
+      totalSub += product.discountedPrice * product.quantity;
+    }else{
+      totalSub += product.price * product.quantity;
+    }
+    console.log(totalSub.toFixed(2));
+    console.log(product.onSale);
+  })
+  const priceTotal = totalSub + shippingCost;
+
+  console.log(priceTotal)
+
+  subTotal.textContent = `Kr. ${totalSub.toFixed(2)}`;
+  shipping.textContent = `Kr. ${shippingCost.toFixed(2)}`;
+  total.textContent = `Kr. ${priceTotal.toFixed(2)}`
 }
+
 // --- EVENT LISTENER ---
+country.addEventListener('change', () => {
+  priceSummary();
+})
 
 // --- CALL ---
-async function startSite() {
+function startSite() {
   try {
-    await fetchCart()
+    getCart()
     loadCartFromStorage()
-    
+    priceSummary()
     footerYear();
   } catch (error) {
     console.log("failed", error);
   }
 }
 startSite();
-getCart()

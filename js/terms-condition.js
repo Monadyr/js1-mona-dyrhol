@@ -1,3 +1,3 @@
 'use strict'
 
-document.getElementById('termsUpdateDate').textContent = new Date().getFullYear()
+document.getElementById('last-updated').textContent = new Date().getFullYear()

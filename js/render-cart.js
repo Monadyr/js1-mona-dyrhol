@@ -58,6 +58,7 @@ export function addToCart(movie, button){
         image: movie.image,
         price: movie.price,
         discountedPrice: movie.discountedPrice,
+        onSale: movie.onSale,
         quantity: 1
     });
     }
