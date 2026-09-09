@@ -37,10 +37,10 @@ function selectedMovie(movie) {
   title.textContent = movie.title;
 
   const genre = document.createElement("p");
-  genre.textContent = movie.genre;
+  genre.textContent = `Genre: ${movie.genre}`;
 
   const rating = document.createElement("p");
-  rating.textContent = ` ${movie.rating}`;
+  rating.textContent = `IMDb: ${movie.rating}`;
 
   const released = document.createElement("p");
   released.textContent = movie.released;

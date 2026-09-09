@@ -25,23 +25,23 @@
     <form id="checkout-form">
     <fieldset id="shippingInfo">
       <legend>Shipping Address</legend>
-
+<div>
         <label for="fullname">Full Name</label>
         
         <input type="text" name="fullname" id="fullname" autocomplete="name" placeholder="Type full name" >
 
         <label for="address">Street Address</label>
         <input type="text" id="address" name="address" autocomplete="street-address" placeholder="Type street address" >
-      <div>
+
         <label for="city">City</label>
         <input type="text" name="city" id="city" autocomplete="address-level2" placeholder="Type city" >
 
         <label for="zip">Postal Code</label>
         <input type="text" name="zip" id="zip" autocomplete="postal-code" placeholder="Type postal code" >
-      </div>
+
         <label for="country">Country</label>
         <input type="text" name="country" id="country" autocomplete="country-name" placeholder="Type country" >
-
+</div>
         <section class="summary">
           <h2>Summary</h2>
           <p>Subtotal: <span id="subtotal">0</span></p>
@@ -49,17 +49,9 @@
           <p>Total: <span id="total">0</span></p>
         </section>
 
-        <button type="submit" class="buy-btn">BUY</button>
+        <button type="submit" class="buy-btn">CONFIRM</button>
     </fieldset>
     </form>
-
-    <section class="Summary">
-      <h2>Summary</h2>
-      <p>Subtotal: <span id="subtotal">0</span></p>
-      <p>Shipping: <span id="shipping">0</span></p>
-      <p>Total: <span id="total">0</span></p>
-    </section>
-
     
   </main>
 

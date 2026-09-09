@@ -12,7 +12,13 @@ h1{
   padding: 8px 16px;
   margin: 16px 0;
   border-radius: 15px;
+  color: rgb(45, 20, 0);;
 }
+.buy-btn:hover{
+  background:rgba(255, 255, 255, 0.122); 
+  color: white;
+}
+
 
 .cart-list{
   position: relative;
@@ -58,30 +64,33 @@ h1{
 .on-sale{
   text-decoration: line-through;
 }
-
+fieldset div {
+  border: solid 2px rgba(72, 59, 53, 0.275) ;
+  border-radius: 10px;
+  padding: 5px 20px 20px;
+  display: flex;
+  flex-direction: column;
+}
 fieldset{
   border: none;
   display: flex;
-  flex-direction: column;
-  width: 500px;
+  flex-direction: column;;
   color: white;
+  max-width: 250px;
+  min-width: 100px;
+  margin: 20px 0;
 }
-fieldset div {
-  background: white;
-}
-fieldset div input{
-  border: none;
 
-}
-fieldset div label {
-  color: black;
+fieldset label {
+  color: white;
+  font-size: 12px;
 }
 fieldset input{
-width: clamp(100px, 15vw, 300px);
 color: black;
 }
-.Summary{
+.summary{
   color: white;
+  margin: 30px 0;
 }
 
 @media(max-width: 500px){

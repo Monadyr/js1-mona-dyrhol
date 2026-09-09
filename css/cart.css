@@ -61,6 +61,10 @@ h1{
   font-weight: bold;
   margin: 10px;
 }
+.remove-btn:hover{
+  color: rgb(45, 20, 0);
+  background: rgba(255, 255, 255, 0.565);
+}
 .on-sale{
   text-decoration: line-through;
 }
@@ -75,6 +79,11 @@ h1{
   padding: 8px 16px;
   margin: 16px 0;
   border-radius: 15px;
+  color: rgb(45, 20, 0);;
+}
+.checkout-btn:hover{
+  background:rgba(255, 255, 255, 0.122); 
+  color: white;
 }
 
 @media(max-width: 500px){

@@ -35,6 +35,7 @@ function saveCartToStorage(){
    localStorage.setItem('cart', JSON.stringify(cart));
   }catch(error){
     console.log(error)
+    throw Error;
   }
 }
 
@@ -46,6 +47,12 @@ export function addToCart(movie, button){
 
     button.classList.add('clicked-btn');
     button.innerHTML = 'Added to cart';
+
+    setTimeout(()=> {
+      button.classList.remove('clicked-btn');
+      button.innerHTML = 'Add to cart';
+    },2000);
+    
     
     const matchingItem = cart.find(item => item.id === movie.id);
 

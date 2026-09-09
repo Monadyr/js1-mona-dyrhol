@@ -2,7 +2,7 @@
 .movie-section{
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(clamp(120px, 25vw, 250px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(clamp(140px, 25vw, 250px), 1fr));
   gap: 2rem;
 }
 .movie-card {
@@ -13,31 +13,43 @@
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  height: auto;
+  height: 100%;
   overflow: hidden;
   color: white;
+  justify-content: space-between;
 }
+.movie-price{
+  display: flex;
+  position: relative;
+  margin: 5px;
+} 
 .movie-card:hover,
 #category-section article:hover{
   transform: scale(1.05);
 }
 .movie-card img {
   width: 100%;
-  height: 250px;
+  height: 200px;
   object-fit: cover;
 }
 .movie-card h3 {
   margin: 10px 0 4px;
   padding: 0 8px;
+  font-size: clamp(14px, 2vw, 20px);
 }
 .movie-data {
   display: flex;
   align-items: center;
   gap: 20px;
+  margin: 5px;
+}
+.movie-data p{
+  border: solid 0.5px rgba(255, 255, 255, 0.169);
+  border-radius: 5px;
 }
 .movie-card p {
-  margin: 0;
-  padding: 0 8px;
+  padding: 5px;
+  font-size: clamp(10px, 2vw, 16px);
 }
 /*--- SALE PRICE ---*/
 .on-sale{

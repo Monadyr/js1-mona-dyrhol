@@ -29,11 +29,14 @@ export function renderMovies(moviesToRender, movieSection, productPath){
       const movieData = document.createElement("div")
       movieData.classList.add('movie-data')
 
+      const moviePrice = document.createElement("div")
+      moviePrice.classList.add('movie-price')
+
       const genre = document.createElement('p');
-      genre.textContent = `${movie.genre}`;
+      genre.textContent = `Genre: ${movie.genre}`;
 
       const rating = document.createElement('p');
-      rating.textContent = `${movie.rating}`;
+      rating.textContent = `IMDb: ${movie.rating}`;
 
       const price = document.createElement('p');
       price.classList.add('card-price')
@@ -46,13 +49,17 @@ export function renderMovies(moviesToRender, movieSection, productPath){
       const onSale = movie.onSale;
 
       movieData.appendChild(genre);
-      movieData.appendChild(rating)
+      movieData.appendChild(rating);
 
       movieCard.appendChild(image);
       movieCard.appendChild(title);
       movieCard.appendChild(movieData);
-      movieCard.appendChild(price);
-      movieCard.appendChild(discountedPrice)
+
+      moviePrice.appendChild(price);
+      moviePrice.appendChild(discountedPrice)
+      
+      movieCard.appendChild(moviePrice);
+      
 
       link.appendChild(movieCard);
       movieSection.appendChild(link);          
