@@ -1,5 +1,16 @@
-h1,h2,.purchase-text{
+h1{
   color: white;
+  font-size: clamp(24px, 6vw, 40px);
+  font-weight: 600;
+}
+h2{
+  color: white;
+  font-size: clamp(16px, 3vw, 24px);
+}
+.purchase-text{
+  color: white;
+  font-size: clamp(12px, 3vw, 18px);
+  font-weight: 400;
 }
 #displayOrder{
   position: relative;

@@ -78,7 +78,7 @@ async function startSite() {
     footerYear();
   } catch (error) {
     console.log("failed", error);
-    catchError.innerHTML = 'Something went wrong.. Please try again later.';
+    catchError.innerHTML = '<p id="catch-error">Something went wrong.. Please try again later.</p>';
   }
 }
 startSite();

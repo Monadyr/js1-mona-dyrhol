@@ -39,7 +39,7 @@ function displayCart() {
     movieData.classList.add("movie-data");
 
     const title = document.createElement("h3");
-    title.textContent = "Movie: " + movie.title;
+    title.textContent = movie.title;
 
     const price = document.createElement("p");
     price.classList.add("card-price");

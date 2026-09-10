@@ -1,9 +1,12 @@
 h1{
   color: white;
-  font-size: 40px;
+  font-size: clamp(24px, 6vw, 40px);
   font-weight: 600;
 }
-
+h2{
+  color: white;
+  font-size: clamp(16px, 3vw, 24px);
+}
 .cart-list{
   position: relative;
   display: flex;
