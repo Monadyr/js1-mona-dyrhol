@@ -1,6 +1,5 @@
 "use strict";
 
-import { loadCartFromStorage, fetchCart} from "./render-cart.js";
 import { footerYear } from "./footer.js";
 
 const displayOrder = document.getElementById('displayOrder')
@@ -14,7 +13,6 @@ function fetchOrder(){
   if(loadOrder){
     order = JSON.parse(loadOrder);
   }
-  console.log(order)
   return order;
 }
 
@@ -43,3 +41,4 @@ function renderOrder(){
   })
 }
 renderOrder()
+footerYear()

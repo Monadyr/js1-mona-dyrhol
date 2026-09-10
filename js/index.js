@@ -6,7 +6,6 @@ import { loadCartFromStorage } from "./render-cart.js";
 import { footerYear } from "./footer.js";
 
 // --- DOM ---
-const movieSection = document.querySelectorAll(".movie-section");
 const trendingMovies = document.getElementById("trending-movies");
 const newReleases = document.getElementById("new-releases");
 const categorySection = document.getElementById("category-section");
@@ -45,9 +44,7 @@ function createCategories() {
       categorySection.appendChild(uniqueGenre);
     }
   } catch (error) {
-    console.log(error);
-    categorySection.innerHTML =
-      '<p class="error-msg">Could not load categories. Try again later.</p>';
+    categorySection.innerHTML ='<p class="error-msg">Could not load categories. Try again later.</p>';
   }
 }
 
@@ -77,7 +74,6 @@ async function startSite() {
     createCategories();
     footerYear();
   } catch (error) {
-    console.log("failed", error);
     catchError.innerHTML = '<p id="catch-error">Something went wrong.. Please try again later.</p>';
   }
 }

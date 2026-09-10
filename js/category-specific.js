@@ -32,7 +32,8 @@ async function renderCategoryPage() {
 
     footerYear();
   } catch (error) {
-    console.log("her er det feil, " + error);
+    movieSection.innerHTML = '<p id="catch-error">Something went wrong.. Please try again later.</p>';
+
   }
 }
 renderCategoryPage();

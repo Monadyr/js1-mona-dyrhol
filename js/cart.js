@@ -94,7 +94,7 @@ checkoutBtn.addEventListener("click", () => {
   checkoutBtn.classList.add("clicked");
   const shoppingCart = fetchCart()
   if(shoppingCart.length >= 1){
-  window.location.href = "../checkout/index.html";
+  window.location.href = "index.html";
   }else{
     checkoutBtnMsg.innerHTML = '<p>Your cart is empty. Add a product to continue.</p>'
   }
@@ -107,7 +107,6 @@ async function startSite() {
     displayCart();
     footerYear();
   } catch (error) {
-    console.log("failed", error);
     cartList.innerHTML='<p class="error-msg">Something went wrong, please try again later.</p>'
   }
 }

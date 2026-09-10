@@ -9,7 +9,6 @@ import { footerYear } from "./footer.js";
 // --- DOM ---
 const productDetailInfo = document.querySelector(".product-detail-info");
 const movieSection = document.querySelector(".movie-section");
-const cartCount = document.getElementById("cartCount");
 
 // --- FUNCTIONS ---
 /**
@@ -123,7 +122,6 @@ async function startSite() {
 
     footerYear();
   } catch (error) {
-    console.log("failed", error);
     productDetailInfo.innerHTML = "<p class='error-msg'>Woops... No movie was found</p>";
   }
 }

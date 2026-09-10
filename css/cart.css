@@ -75,8 +75,8 @@ h2{
   display: block;
 }
 .checkout-btn{
-  width: 150px;
-  font-size: 16px;
+  max-width: 150px;
+  font-size: clamp(14px, 3vw, 18px);
   font-weight: bold;
   border: none;
   padding: 8px 16px;

@@ -34,7 +34,6 @@ function saveCartToStorage(){
   try{
    localStorage.setItem('cart', JSON.stringify(cart));
   }catch(error){
-    console.log(error)
     throw Error;
   }
 }

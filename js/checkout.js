@@ -8,7 +8,6 @@ const subTotal = document.getElementById('subtotal');
 const shipping = document.getElementById('shipping');
 const total = document.getElementById('total');
 const country = document.getElementById('country');
-const buyBtn = document.querySelector('.buy-btn');
 const checkoutForm = document.getElementById('checkout-form')
 // --- FUNCTION ---
 /**
@@ -141,7 +140,6 @@ function startSite() {
     priceSummary()
     footerYear();
   } catch (error) {
-    console.log("failed", error);
     cartList.innerHTML='<p class="error-msg">Something went wrong, please try again later.</p>'
   }
 }

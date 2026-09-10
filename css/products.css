@@ -1,6 +1,6 @@
 h1{
   color: white;
-  font-size: 50px;
+  font-size: clamp(24px, 6vw, 40px);
   font-weight: 400;
 }
 /*--- FILTER BTN ---*/

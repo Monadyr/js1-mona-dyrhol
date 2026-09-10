@@ -9,8 +9,8 @@ h2{
 }
 
 .buy-btn{
-  width: 150px;
-  font-size: 16px;
+  max-width: 150px;
+  font-size: clamp(14px, 3vw, 18px);
   font-weight: bold;
   border: none;
   padding: 8px 16px;
@@ -22,8 +22,6 @@ h2{
   background:rgba(255, 255, 255, 0.122); 
   color: white;
 }
-
-
 .cart-list{
   position: relative;
   display: flex;

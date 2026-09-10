@@ -124,7 +124,7 @@ async function startSite() {
     createGenreCheckbox();
     footerYear();
   } catch (error) {
-    console.log("dette er feil " + error);
+    movieSection.innerHTML = '<p id="catch-error">Something went wrong.. Please try again later.</p>';
   }
 }
 startSite();
