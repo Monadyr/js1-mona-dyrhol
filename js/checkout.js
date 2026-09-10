@@ -68,18 +68,26 @@ function getCart(){
 /**
  * Estimate shipping cost based on country
  */
+const typeCountry = document.getElementById('typeCountry')
 function shippingAddress(){
   const shippingRates = {
       norway: 0,
       sweden: 50,
       denmark: 50,
+      finland: 50,
       default: 200
     };
 
-  const countryName = country.value.toLowerCase();
-
+  const countryName = country.value;
+    typeCountry.hidden = true;
+    typeCountry.required = false;
   if(countryName === ""){
       return 0;
+    }
+
+    if(countryName === "other"){
+      typeCountry.hidden = false;
+      typeCountry.required = true;
     }
 
   return shippingRates[countryName] ?? shippingRates.default;
