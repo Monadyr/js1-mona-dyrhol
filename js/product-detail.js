@@ -19,7 +19,7 @@ function selectedMovie(movie) {
   productDetailInfo.innerHTML = "";
 
   if (!movie) {
-    productDetailInfo.innerHTML = "<p>Woops... No movie was found</p>";
+    productDetailInfo.innerHTML = "<p class='error-msg'>Woops... No movie was found</p>";
     return;
   }
 
@@ -124,6 +124,7 @@ async function startSite() {
     footerYear();
   } catch (error) {
     console.log("failed", error);
+    productDetailInfo.innerHTML = "<p class='error-msg'>Woops... No movie was found</p>";
   }
 }
 startSite();
