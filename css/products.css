@@ -17,18 +17,31 @@ h1{
 .checkbox-el{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
 }
 .checkbox-el label{
-  margin-right: 20px;
   padding: 2px 4px;
   border: solid 0.5px rgba(255, 255, 255, 0.169);
   border-radius: 5px;
-  display: flex;
-  gap: 10px;
+  cursor: pointer;
 }
 .checkbox-el input{
-  margin-left: 5px;
-  order: -1;
+  position: absolute;
+  opacity: 0;
+}
+.checkbox-el label:has(input:checked) {
+  outline:  2px;
+  border: solid 2px rgba(255, 255, 255, 0.486);
+}
+.checkbox-el label:has(input:focus-visible){
+  outline: 2px solid rgb(74, 140, 255);
+}
+.sort-el{
+  margin: 20px 0;
+}
+.sort-el select{
+  padding: 5px;
+  margin: 0 10px;
 }
 .open{
 display: block;
