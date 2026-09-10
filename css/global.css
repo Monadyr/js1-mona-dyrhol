@@ -80,7 +80,7 @@ i:hover{
 i #cartCount{
   font-size: clamp(10px, 2vw, 16px);
   color: white;
-  position: relative;
+  position: absolute;
   text-align: center;
 }
 
