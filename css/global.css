@@ -86,7 +86,10 @@ i #cartCount{
 
 footer {
   color: white;
-  margin: 30px clamp(15px, 5vw, 100px);
+  margin: 30px clamp(15px, 10vw, 150px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 footer a:hover {
   font-weight: bold;
