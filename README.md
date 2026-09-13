@@ -49,8 +49,9 @@ AI was used for brainstorming, explaining JavaScript concepts, and debugging.
 - Explaining `forEach` and `for` loops 
 - Explaining `localStorage` and `sessionStorage` 
 - Debugging checkout form submission 
-- Explaining relative paths such as `../` and `../../` For more detailed information about each AI interaction, see the AI usage log in the reflection report.
+- Explaining relative paths such as `../` and `../../` 
 - Generate text for terms and privacy page
+- For more detailed information about each AI interaction, see the AI usage log in the reflection report.
 
 ## Author
 
