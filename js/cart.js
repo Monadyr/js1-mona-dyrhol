@@ -12,7 +12,7 @@ const checkoutBtnMsg = document.querySelector('.checkout-btn-msg')
 
 // --- FUNCTION ---
 /**
- * Display cart list on page
+ * Create cart list to display on page
  */
 function displayCart() {
   const cart = fetchCart();
@@ -89,7 +89,6 @@ function displayCart() {
 /**
  * Checkout button
  */
-
 checkoutBtn.addEventListener("click", () => {
   checkoutBtn.classList.add("clicked");
   const shoppingCart = fetchCart()

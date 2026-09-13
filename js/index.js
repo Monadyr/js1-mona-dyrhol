@@ -52,7 +52,7 @@ function createCategories() {
 
 browseBtn.addEventListener("click", () => {
   browseBtn.classList.add("clicked");
-  window.location.href = "./products.html";
+  window.location.href = "products.html";
 });
 
 // --- CALL ---

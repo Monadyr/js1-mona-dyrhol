@@ -41,7 +41,6 @@ function filterContainer(items, sortOption) {
 }
 /**
  * Find the movies genres.
- * @returns
  */
 function matchGenre() {
   const genreMatch = allMovies.flatMap((movie) => movie.genre);

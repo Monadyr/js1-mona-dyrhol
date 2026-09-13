@@ -1,7 +1,7 @@
 :root {
   --background: linear-gradient(110deg, rgb(65, 32, 18), rgb(24, 11, 3));
-  --headings: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  --body-text: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --headings: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --body-text: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 /* Screen readers */
@@ -75,7 +75,7 @@ i:hover{
 
 .logo{
   font-size: clamp(20px, 5vw, 30px);
-  font-weight: 300;
+  font-weight: 500;
 }
 i #cartCount{
   font-size: clamp(10px, 2vw, 16px);

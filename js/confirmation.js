@@ -6,7 +6,9 @@ const displayOrder = document.getElementById('displayOrder')
 
 let order = []
 
-
+/**
+ * Fetch order values from sessionStorage 
+ */
 function fetchOrder(){
   let loadOrder = sessionStorage.getItem('order');
 
@@ -15,7 +17,9 @@ function fetchOrder(){
   }
   return order;
 }
-
+/**
+ * Create order card to display on page
+ */
 function renderOrder(){
   const display = fetchOrder();
 

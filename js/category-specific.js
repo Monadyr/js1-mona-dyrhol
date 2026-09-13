@@ -14,7 +14,6 @@ const titleGenre = document.getElementById("title-genre");
 function genreMatch(genre) {
   return allMovies.filter((movie) => movie.genre === genre);
 }
-// --- EVENT LISTENER ---
 
 // --- CALL ---
 async function renderCategoryPage() {

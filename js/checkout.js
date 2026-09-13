@@ -11,7 +11,7 @@ const country = document.getElementById('country');
 const checkoutForm = document.getElementById('checkout-form')
 // --- FUNCTION ---
 /**
- * render cart from local storage and place on page
+ * Create cart list from localStorage from fetchCart to display on page
  */
 function getCart(){
   const cart = fetchCart();

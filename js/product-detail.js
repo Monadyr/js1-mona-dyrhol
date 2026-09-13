@@ -96,7 +96,6 @@ function genreMatch(genre) {
   return allMovies.filter((movie) => movie.genre === genre);
 }
 
-// --- EVENT LISTENER ---
 
 // --- CALL ---
 
